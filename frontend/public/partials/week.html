@@ -1,0 +1,44 @@
+<div class="sub-title">
+    <i class="fa fa-chevron-circle-left fa-lg" ng-click="previous()"></i>
+    <span>Schedule in {{days[0].date.format("MMMM DD")}} - {{days[days.length-1].date.format("MMMM DD, YYYY")}}</span>
+    <i class="fa fa-chevron-circle-right fa-lg" ng-click="next()"></i>
+</div>
+
+<div class="row">
+    <div class="small-12 columns">
+        <div class="small-1 columns time-span">
+            <ul>
+                <li class="sub-title time-slot" style="padding-top: 0">00:00</li>
+                <li class="sub-title time-slot">02:00</li>
+                <li class="sub-title time-slot">04:00</li>
+                <li class="sub-title time-slot">06:00</li>
+                <li class="sub-title time-slot">08:00</li>
+                <li class="sub-title time-slot">10:00</li>
+                <li class="sub-title time-slot">12:00</li>
+                <li class="sub-title time-slot">14:00</li>
+                <li class="sub-title time-slot">16:00</li>
+                <li class="sub-title time-slot">18:00</li>
+                <li class="sub-title time-slot">20:00</li>
+                <li class="sub-title time-slot" style="padding-bottom: 2.4em">22:00</li>
+            <ul>
+        </div>
+        <div class="small-11 columns" style="padding-left: 2em">
+            <div class="row">
+                <div class="small-1 columns sub-title weekday">Sun</div>
+                <div class="small-1 columns sub-title weekday">Mon</div>
+                <div class="small-1 columns sub-title weekday">Tue</div>
+                <div class="small-1 columns sub-title weekday">Wed</div>
+                <div class="small-1 columns sub-title weekday">Thu</div>
+                <div class="small-1 columns sub-title weekday">Fri</div>
+                <div class="small-1 columns sub-title weekday" style="margin-right: 0">Sat</div>
+            </div>
+            <div class="row">
+                <div class="small-1 columns oneday" ng-repeat="day in days">
+                    <div class="everytime" ng-repeat="slot in day.slots">{{slot.todo}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--div ng-repeat="week in weeks">
+    <div class="small-1 columns everyday" ng-class="{ today: day.isToday, 'different-month': !day.isCurrentMonth, selected: day.date.isSame(selected) }" ng-click="select(day)" ng-repeat="day in week.days">{{day.number}}</div-->
+</div>

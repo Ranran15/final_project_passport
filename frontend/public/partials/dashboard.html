@@ -1,0 +1,47 @@
+<div class="off-canvas-wrapper">
+  <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+    <!-- off-canvas title bar for 'small' screen -->
+    <div class="title-bar" data-responsive-toggle="widemenu" data-hide-for="medium">
+        <div class="title-bar-right">
+            <span class="title-bar-title">Course Helper</span>
+            <button class="menu-icon" type="button" data-open="offCanvasRight"></button>
+        </div>
+    </div>
+
+    <!-- off-canvas right menu -->
+    <div ui-view="menu"></div>
+
+    <!-- "wider" top-bar menu for 'medium' and up -->
+    <div id="widemenu" class="top-bar">
+        <div class="top-bar-left">
+            <span class="title-bar-title">Course Helper</span>
+        </div>
+        <div class="top-bar-right">
+            <ul class="menu">
+                <button class="bars" type="button" data-open="offCanvasRight"><i class="fa fa-bars" aria-hidden="true"></i></button>
+            </ul>
+        </div>
+    </div>
+
+    <!-- original content goes in this container -->
+    <div class="off-canvas-content" data-off-canvas-content>
+        <div ui-view="header"></div>
+        <div ui-view="content"></div>
+        <footer>
+            <div>
+              <i class="fa fa-facebook-official fa-3x"></i>
+              <i class="fa fa-twitter-square fa-3x"></i>
+              <i class="fa fa-linkedin-square fa-3x"></i>
+              <i class="fa fa-google-plus-square fa-3x"></i>
+
+            </div>
+            <div>
+              Copyright © BEST team
+            </div>              
+        </footer>
+    </div>
+
+    <!-- close wrapper, no more content after this -->
+  </div>
+</div>
+

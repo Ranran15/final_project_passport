@@ -1,0 +1,9 @@
+// Insert your mixins
+@mixin box-shadow($shadow) {
+          box-shadow: $shadow;
+  -webkit-box-shadow: $shadow;
+     -moz-box-shadow: $shadow;
+      -ms-box-shadow: $shadow;
+}
+
+.reveal {@include box-shadow($default-box-shadow);}

@@ -1,0 +1,105 @@
+<div class="container">
+    <div class="row">
+        <div class="small-12 large-5 columns" id="news">
+            <div class="sub-title"> NEWS </div>
+            <ul class="accordion" data-accordion>
+              <li class="accordion-item is-active" data-accordion-item>
+                <a class="accordion-title">Accordion 1</a>
+                <div class="accordion-content" data-tab-content>
+                  I would start in the open state, due to using the `is-active` state class.
+                </div>
+              </li>
+              <li class="accordion-item" data-accordion-item>
+                <a class="accordion-title">Accordion 2</a>
+                <div class="accordion-content" data-tab-content>
+                  I would start in the close state.
+                </div>
+              </li>
+            </ul>
+        </div>
+        <div class="small-12 large-7 columns text-center" id="upcoming">
+            <div class="sub-title"> Upcoming Dues and Events <i class="fa fa-plus add" data-open="add-task"></i></div>
+            <div class="clear"><!-- --></div>
+            <ul>
+                <li ng-repeat="duesPerDay in upcommingDuesArr">
+                    <a class="date">{{duesPerDay.date}} </a>
+                    <ul class="text-left">
+                        <li ng-repeat="due in duesPerDay.dues"><span>{{due.dueDate.substring(11, 19)}} </span><i class="fa fa-circle fa-lg" style="color:pink"></i>{{due.courseName + " " + due.name}} due</li>
+                        <!--li> <span> 20:00pm </span> <i class="fa fa-circle fa-lg" ></i>CS511 MP2 due</li-->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <calendar class="small-12 columns" selected="day"></calendar>
+        <div class="small-12 text-center">Selected date: <b>{{day.format('dddd, MMMM Do YYYY')}}</b></div>
+    </div>
+</div>
+
+<div class="reveal" id="add-task" data-reveal>
+    <div class="modal-title"><i class="fa fa-calendar-plus-o fa-2x" aria-hidden="true"></i>Add Your Own Task</div>
+
+    <div>
+      <form data-abide novalidate name="ptaskFrom">
+        <div class="row" style="height: 21em;">
+            <div class="small-8 small-centered columns">
+              <label> Choose Course <span class="required">*</span>
+                <select required
+                  ng-options="option.courseName for option in data.availableOptions track by option.courseid"
+                  ng-model="data.selectedOption">
+                </select>
+              </label>
+              <label> Name <span class="required">*</span>
+                <input ng-model="name" type="text" required>
+              </label>
+              <label> Description
+                <input ng-model="description" type="text">
+              </label>
+              <label> Deadline <span class="required">*</span>
+                  <input ng-model="deadline" type="datetime-local" required>
+              </label>
+            </div>
+        </div>
+
+        <div class="row text-center" style="margin-bottom: 2em;">
+          <div class="small-8 small-centered columns">
+            <button type="submit" value="submit" class="button" ng-click="addPTask(ptaskFrom.$valid)">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="reveal" id="day-detail" data-reveal>
+    <div class="modal-title"><i class="fa fa-list-ul fa-2x" aria-hidden="true"></i> Details of the Day</div>
+
+    <div class="row text-center">
+        <ul class="small-8 small-centered">
+            <li>
+                <a class="date">{{day.format('dddd, MMMM Do YYYY')}}</a>
+                <ul class="text-left">
+                    <li class="row" ng-repeat="due in upcommingDuesDic[day.format().substring(0, 10)]">
+                        <span class="small-2 columns">{{due.dueDate.substring(11, 19)}} </span>
+                        <div class="small-1 columns">
+                            <i class="fa fa-circle fa-lg" style="color:pink"></i>
+                        </div>
+                        <div class="small-8 columns">
+                            <div>{{due.courseName}}</div>
+                            <div>Assgiment: {{due.name}}</div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <p> Laziness pays off now. Hard work pays off in the future </p>
+    </div>   
+
+</div>
+

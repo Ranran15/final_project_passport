@@ -1,0 +1,141 @@
+<div class="container">
+    <div class="row">
+        <ul class="small-11 medium-10 small-centered columns" id="course-info">
+            <div class="c-title">Course Infomation</div>
+            <i class="fa fa-edit add" ng-click="coursePanel='edit'" data-open="course-panel"></i>
+            <li class="row clear">
+                <div class="small-12 medium-3 columns info-title">Course Name</div>
+                <div class="small-12 medium-9 columns info">{{currentCourse.name}}</div>
+            </li>
+            <li class="row">
+                <div class="small-12 medium-3 columns info-title">Homepage</div>
+                <div class="small-12 medium-9 columns info">{{currentCourse.homepage}}</div>
+            </li>
+            <li class="row">
+                <div class="small-12 medium-3 columns info-title">Description</div>
+                <div class="small-12 medium-9 columns info">{{currentCourse.description}}</div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="row" >
+        <ul class="small-11 medium-10 small-centered columns" style="min-height:8em" id="course-tasks">
+            <div class="c-title">Course Tasks</div>
+            <i class="fa fa-plus add" ng-click="taskPanel='add'" data-open="task-panel"></i>
+            <li ng-repeat="task in currentCourse.courseTaskList">
+                 <div class="row clear">
+                    <div class="small-12 medium-3 columns info-title">
+                        <div>MP{{$index + 1}}</div> 
+                        <div><a>{{task.name}}</a></div>
+                        <i class="fa fa-trash-o" ng-click="deleteTask($index)"></i>
+                        <i class="fa fa-edit" ng-click="openEditTask($index)" data-open="task-panel"></i>
+                    </div>
+                    <div class="small-12 medium-9 columns info">
+                        <div><span>Due: </span>{{task.dueDate}}
+                        </div>
+                        <div><span>Description: </span>{{task.description}}.
+                        </div>
+                        <div><i class="fa fa-chevron-right" aria-hidden="true"></i> More details</div>
+                    </div>
+                </div>               
+            </li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <ul class="small-11 medium-10 small-centered columns" id="work-load" style="overflow: hidden;padding-right:0">
+            <div class="c-title">Work Load</div>
+            <div ng-if="totalTime>0" id="piechart" style="width:120%; height: 600px;margin:0 auto"></div>
+            <div ng-if="totalTime<=0" style="margin-top:5em">
+              <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
+              <span style="font-size:1.5em">Not Enough Data</span>
+            </div>
+        </ul>
+    </div>
+
+</div>
+
+<div class="reveal" id="course-panel" data-reveal>
+  <div class="modal-title" ng-if="coursePanel=='edit'">
+    <i class="fa fa-edit fa-2x" aria-hidden="true"></i>
+    Edit Course Information
+  </div>
+  <div class="modal-title" ng-if="coursePanel=='add'">
+    <i class="fa fa-newspaper-o fa-2x" aria-hidden="true"></i>
+    Add Course
+  </div>
+
+  <div>
+    <form data-abide novalidate name="courseFrom">
+      <div class="row" style="height: 23em;">
+        <div class="small-8 small-centered columns">
+          <label> Course Name {{courseName}} {{coursePanel}} <span class="required">*</span>
+            <input ng-model="$parent.courseName" type="text"  required>
+          </label>
+          <label> Homepage
+            <input ng-model="$parent.courseHomepage" type="text">
+          </label>
+          <label> Description
+            <textarea ng-model="$parent.courseDescription" type="text" rows="4" cols="80">
+            </textarea>
+          </label>
+        </div>
+      </div>
+
+      <div class="row text-center" style="margin-bottom: 2em;">
+        <div class="small-8 small-centered columns">
+          <button ng-if="coursePanel=='edit'" type="submit" value="submit" class="button" ng-click="editCourse(courseFrom.$valid)">Submit</button>
+          <button ng-if="coursePanel=='add'" type="submit" value="submit" class="button" ng-click="addCourse(courseFrom.$valid)">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="reveal" id="task-panel" data-reveal>
+  <div ng-if="taskPanel=='edit'" class="modal-title">
+    <i class="fa fa-edit fa-2x" aria-hidden="true"></i>Editing MP{{currentTaskIndex + 1}}
+  </div>
+  <div ng-if="taskPanel=='add'"  class="modal-title">
+    <i class="fa fa-edit fa-2x" aria-hidden="true"></i>Add MP
+  </div>
+
+  <div>
+    <form data-abide novalidate name="taskFrom">
+      <div class="row" style="height: 23em;">
+        <div class="small-8 small-centered columns">
+          <label> Name <span class="required">*</span>
+            <input ng-model="$parent.taskName" type="text"  required>
+          </label>
+          <label> Description
+            <textarea ng-model="$parent.taskDescription" type="text" rows="4" cols="80">
+            </textarea>
+          </label>
+          <label> Deadline <span class="required">*</span>
+            <input ng-model="$parent.taskDeadline" type="datetime-local" required>
+          </label>
+        </div>
+      </div>
+
+      <div class="row text-center" style="margin-bottom: 2em;">
+        <div class="small-8 small-centered columns">
+          <button ng-if="taskPanel=='edit'" type="submit" value="submit" class="button" ng-click="editTask(currentTaskIndex, taskFrom.$valid)">
+            Submit
+          </button>
+          <button ng-if="taskPanel=='add'"  type="submit" value="submit" class="button" ng-click="addTask(taskFrom.$valid)">
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+

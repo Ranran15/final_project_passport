@@ -10,6 +10,11 @@ module.exports = function(app, passport) {
 	/*app.post('/signup', passport.authenticate('local-signup'), function(req, res) {
 		res.redirect('/profile.html');
 	});*/
+
+
+	/*app.get('/',function(req, res) {
+		res.redirect('/backup.html');
+	});*/
 	app.post('/signup', function(req, res) {
 		if(req.body.accountType == 'student'){
 			passport.authenticate('student-signup')(req, res, function () {

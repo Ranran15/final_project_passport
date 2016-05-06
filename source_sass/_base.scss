@@ -1,0 +1,557 @@
+// Add any custom Sass & CSS here
+.no-js {
+  @include breakpoint(small only) {
+    .top-bar {
+      display: none;
+    }
+  }
+
+  @include breakpoint(medium) {
+    .title-bar {
+      display: none;
+    }
+  }
+}
+
+ul {
+    list-style-type: none;
+    background: #fff;
+    margin-left: 0;
+}
+
+.top-bar {
+    background: #000;
+    padding-top: 0.8rem;
+}
+
+.top-bar-left {
+    margin-left: 2em;
+    .title-bar-title {
+        color: #fff;
+        font-size: 1.5em;
+        text-shadow:5px 5px 5px #0a0a0a;
+    }
+}
+.top-bar-right {
+    margin-right: 2em;
+    .menu {
+        background: none;
+        .bars {
+            color: #fff;
+            font-size: 2em;
+        }
+    }
+}
+
+#offCanvasRight {
+    color: #000;
+}
+#menulist {
+    
+}
+
+#profile, #course {
+    height: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: initial;
+    background-position: center bottom;  
+    background-repeat: no-repeat;
+}
+
+#profile {
+    background-image: url("../data/images/student_bg.jpg");
+    background-size: 100% auto;
+    @include breakpoint (small only) {
+        height: 220px;
+    }
+}
+
+#course {
+    background-image: url("../data/images/course_bg.png");
+    background-size: 100% 100%;
+    @include breakpoint(medium down) {
+        background-size: auto 100%;
+    }
+}
+
+#instructor {
+    background-image: url("../data/images/instructor_bg.jpg");
+    background-size: 100% 100%;
+    @include breakpoint(medium down) {
+        background-size: auto 100%;
+    }
+}
+
+.circle {
+    width: 180px;
+    height: 180px;
+    @include breakpoint (medium down) {
+        width: 130px;
+        height: 130px;
+    }
+    cursor: pointer;
+    padding-top: 50%;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    border: 5px solid #fff;
+}
+
+#profile-pic {
+    padding: 0;
+    margin-top: 5.5em;
+    background-image: url("../data/images/blank_profile.png");
+    background-position: center center;
+}
+
+#user-name {
+    color: #fff;
+    padding: 1em 1.5em;
+    font-size: 1.3em;
+    font-weight: 900;
+}
+
+#course-name {
+    color: #fff;
+    top: 290px;
+    position: absolute;
+    font-size: 1.8em;
+    font-weight: 800;
+}
+
+.container {
+    background: $bg-gray;
+    padding: 3em 0;
+}
+
+.reveal {
+    padding: 0;
+    outline: 0;
+    border: 0;
+}
+
+.sub-title {
+    width: 100%;
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    padding: 0.3em;
+    margin: .5em 0;
+    background: $p-blue;
+    text-align: center;
+}
+
+.modal-title {
+    @extend .sub-title;
+    padding: 1em;
+    margin: 0 0 2em 0;
+    i {
+        padding: 0 1em 0 0;
+    }
+}
+
+.c-title {
+    float: left;
+    color: #fff;
+    background: $p-blue;
+    border-right: 5px solid $l-blue;
+    padding: 0.6em;
+    text-align: center;
+    margin: 0 0 2em -4em;
+    width: 20em;
+    font-weight: 500;
+    @include breakpoint(small only) {
+        margin-left: -2em;
+        width: 15em;
+    }
+}
+
+.required {
+    color: red;
+}
+
+.button {
+    background: $p-blue;
+    padding: 0.7em 2em;
+    outline: 0;
+    &:hover, &:focus {
+        background: $d-blue;
+    }
+}
+
+.accordion-title::before {
+    font-family: FontAwesome;
+    content: "\f0da";
+    font-size: 1em;
+    color: pink;
+    position: relative;
+    padding: 0 1em;
+}
+
+.is-active > .accordion-title::before {
+    content:"\f0d7";
+}
+
+
+
+.add {
+    float: right;
+    font-weight: bold;
+    margin-right: 1em;
+    margin-top: 0.3em;
+    cursor: pointer;
+}
+.clear {
+    clear:both;
+}
+
+.fa-circle{
+    padding: 0 1em;
+}
+
+.fa-pencil, .fa-check-circle{
+    padding: 0 0 0 0.5em;
+    cursor: pointer;
+}
+
+#upcoming, #day-detail, {
+    ul li {
+        .date {
+            display: block;
+            padding: 1rem;
+        }
+        ul {
+            margin: 0;
+            border-top: 1px solid $light-gray;
+            border-bottom: 1px solid $light-gray;
+            background:none;
+            li {
+                background:none;
+                span {
+                    width: 5em;
+                    border-right: 3px solid orange;
+                    padding:0.4em;
+                }
+                padding: 0.6em;
+            }
+        }
+    }
+    p {
+        background: $p-blue;
+        color: #fff;
+        padding: 0.8em;
+        margin: 5em 0 0 0;
+    }
+}
+
+calendar {
+    i {
+        margin-top: 0.2em;
+        padding: 0 0.5em;
+        cursor: pointer;
+    }
+    div.everyday {
+        background: #fff;
+        color: $p-blue;
+        height: 6em;
+        width: 13.5%;
+        margin-right: 0.91666%;
+        margin-top: 0.5em;
+        cursor: pointer;
+        @include breakpoint(small only) {
+            text-align: center;
+            height: 4em;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+        &.today {
+            background: $s-blue;
+        }
+        &.different-month {
+            color: #C0C0C0;
+            cursor: default;
+        }
+        &.selected {
+            background: $p-blue;
+            color: white;
+        }
+    }
+}
+
+.weekday {
+    width: 13.5%;
+    padding: 0.1em;
+    margin-right: 0.91666%;
+}
+
+i.fa-chevron-circle-left {
+    float: left;
+}
+i.fa-chevron-circle-right {
+    float: right;
+}
+
+#todos {
+    li {
+        border-top: 0.4em solid $bg-gray;
+        border-bottom: 0.3em solid $bg-gray;
+        div {
+            padding: 1em;
+        }
+        span {
+            float: right;
+        }
+        .todo-content {
+            margin: 0 1em;
+            border-top: 2px solid $light-gray;
+        }
+    }
+}
+
+week {
+    i {
+        margin-top: 0.2em;
+        padding: 0 0.5em;
+        cursor: pointer;
+    }
+    .time-span {
+        padding: 0;
+    }
+    ul {
+        margin-top: 4em;
+        .time-slot {
+            margin: 0;
+            padding: 1.15em;
+        }
+    }
+    .oneday {
+        width: 13.5%;
+        margin-right: 0.91666%;
+        padding: 0;
+        margin-top: 1em;  
+        &:last-child {
+        margin-right: 0;
+    }  
+    }
+    .everytime {
+        background: #fff;
+        color: $p-blue;
+        height: 2.15em;
+        border-bottom: 1px dotted $p-blue;
+        cursor: pointer;      
+    }
+}
+
+#class-list {
+    border-top: 6px solid $p-blue;
+    margin-top: 2em;
+    padding-top: 1em;
+    li {
+        border-bottom: 1px solid $light-gray;
+        padding-top: 1em;
+        p {
+            margin-left: 2.5em;
+            @include breakpoint(small only) {
+                margin-left: 0.5em;
+            }
+            padding-top: 0.3em;
+        }
+        button {
+            @include breakpoint(small only) {
+                padding: 0.7em 1em;
+            }
+        }
+    }
+    #add-class {
+        padding: 2em 0;
+    }
+}
+
+#class-time {
+    margin-top: 2em;
+    padding: 3em 0;
+    border-top: 6px solid $p-blue;
+    li {
+        p {
+            text-align: center;
+        }
+        padding: 1em;
+    }
+    .progress {
+        background: none;
+        height: 1.5rem;
+    }
+
+}
+#total-time {
+    background: #fff;
+    text-align: center;
+    font-size: 1.2em;
+    margin: 0;
+}
+
+#course-info, #course-tasks {
+    padding: 2em 4em;
+    @include breakpoint(small only) {
+        padding: 2em;
+    }
+    li {
+        padding: 0.5em 0;
+        border-bottom: 2px solid $light-gray;
+        .info-title {
+            font-weight: 900;
+            @include breakpoint(large) {
+                padding-left: 2em;
+            }
+            a {
+                font-weight: 500;
+                font-size: 0.9em;
+            }
+        }
+        .info {
+            border-left: 3px solid orange;
+            @include breakpoint(small only) {
+                margin-top: 1em;
+            }
+            span {
+                font-weight: 800;
+            }
+            i {
+                color: $p-blue;
+                cursor: pointer;
+                padding-right: 0.6em;
+            }
+        }
+    }
+}
+
+#course-tasks .info div {
+    padding: 0.2em;
+}
+
+#work-load {
+    padding: 2em 4em;
+    @include breakpoint(small only) {
+        padding: 2em;
+    }
+}
+
+
+#introduction {
+    text-shadow:5px 5px 5px #0a0a0a;
+    #logo {
+        padding: 2.5em 0 0.3em 0;
+        font-weight: 600;
+        font-size: 3.5rem;
+    }
+    h2 {
+        padding-bottom: 0.2em;
+        font-size: 2.2rem;
+    }
+    .button {
+        background: none;
+        border: 2px solid rgba(255,255,255,0.7);
+        font-size: 1.2rem;
+        font-weight: 500;
+        text-shadow:2px 2px 2px #0a0a0a;
+        &:hover {
+            background: $p-blue;
+            border: 2px solid $p-blue;
+        }
+    }
+    #signup {
+        margin-top: 0.6em;
+        @include breakpoint(medium up) {
+            float: right;
+            margin-right: 1em;
+        }
+    }
+    #login {
+        margin-top: 0.6em;
+        @include breakpoint(medium up) {
+            float: left;
+            margin-left: 1em;
+        }    
+    }
+    .back {
+        padding: 0 2em 1em 0;
+        font-size: 1.3em;
+        font-weight: 500;
+        cursor: pointer;
+    }
+    .ins {
+        margin-left: 3em;
+        @include breakpoint(medium down) {
+            margin-left: 2em;
+        }
+    }
+    label {
+        color: #fff;
+        font-size: 1.2em;
+        font-weight: 500;
+    }
+    input {
+        background: none;
+        border: none;
+        box-shadow: none;
+        border-bottom: 2px solid rgba(255,255,255,0.7);
+        color: #fff;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+    height: 700px;
+    color: #fff;
+    background: $bg-gray;
+    background-image: url("../data/images/intro_bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: auto 100%;
+    @include breakpoint(large up) {
+        background-size: 100% auto;
+    }    
+}
+
+#features {
+    background: $bg-gray;
+    padding: 4em;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: initial;
+    color: $d-blue;
+    .benifit {
+        font-size: 1.3em;
+        border-bottom: 1px solid $dark-gray;
+    }
+    .medium-4 {
+        padding: 3em 0;
+        border-top: 1px dotted $dark-gray;
+        @include breakpoint (medium up) {
+            padding: 0 3em;
+            border: 0;
+            border-left: 1px dotted $dark-gray;
+        }
+    }
+    .function {
+        text-align: justify;
+    }
+    i {
+        margin-bottom: 0.3em;
+    }
+}
+
+footer {
+  background: $p-blue;
+  padding: 4em;
+  text-align: center;
+  div {
+    background: none;
+    display: block;
+    i {
+      cursor: pointer;
+      padding:0 10px 10px 10px;
+    }
+  }
+}

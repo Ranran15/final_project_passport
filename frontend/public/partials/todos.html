@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row">
+        <div class="small-6 columns">
+            <div class="sub-title">TODOs of the Week</div>
+        </div>
+        <div class="small-6 columns"> 
+            <div class="sub-title" style="background: #a5a5a5">All TODOs<i class="fa fa-plus add" data-open="add-todo"></i> </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 columns" >
+            <ul id="todos">
+                <li>
+                    <div class="assignment-name"> 
+                        <i class="fa fa-circle fa-lg" style="color:pink"></i>
+                        <a>CS411 MP1</a>
+                        <span> 
+                            Due 03/23/16 <i class="fa fa-pencil fa-lg"></i><i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="todo-content"> Study slides 12, 13. Read book chapter 14</div>
+                </li>
+                <li>
+                    <div class="assignment-name"> 
+                        <i class="fa fa-circle fa-lg"></i>
+                        <a>CS413 MP1</a>
+
+                    </div>
+                    <div class="todo-content"> Have to solve problem 3-5 by today. Go to office hours.</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <week class="small-12 columns" ></week>
+    </div>
+</div>
+
+<div class="reveal" id="add-todo" data-reveal>
+    <div class="modal-title"><i class="fa fa-calendar-plus-o fa-2x" aria-hidden="true"></i>Add Todo for Task</div>
+
+    <div>
+      <form data-abide novalidate name="userFrom">
+        <div class="row" style="height: 21em;">
+            <div class="small-8 small-centered columns">
+              <label> Choose Task <span class="required">*</span>
+                <select required
+                  ng-options="" 
+                  ng-model="data.selectedOption">
+                </select>
+              </label>
+              <label> Description
+                <input ng-model="description" type="text">
+              </label>
+              <label> Start Time <span class="required">*</span>
+                  <input ng-model="startTime" type="datetime-local" required>
+              </label>
+              <label> End Time <span class="required">*</span>
+                  <input ng-model="endTime" type="datetime-local" required>
+              </label>
+            </div>
+        </div>
+
+        <div class="row text-center" style="margin-bottom: 2em;">
+          <div class="small-8 small-centered columns">
+            <button type="submit" value="submit" class="button">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>

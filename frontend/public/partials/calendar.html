@@ -1,0 +1,21 @@
+<div class="sub-title">
+    <i class="fa fa-chevron-circle-left fa-lg" ng-click="previous()"></i>
+    <span>Dues in {{month.format("MMMM, YYYY")}}</span>
+    <i class="fa fa-chevron-circle-right fa-lg" ng-click="next()"></i>
+</div>
+<div>
+    <div class="small-1 columns sub-title weekday">Sun</div>
+    <div class="small-1 columns sub-title weekday">Mon</div>
+    <div class="small-1 columns sub-title weekday">Tue</div>
+    <div class="small-1 columns sub-title weekday">Wed</div>
+    <div class="small-1 columns sub-title weekday">Thu</div>
+    <div class="small-1 columns sub-title weekday">Fri</div>
+    <div class="small-1 columns sub-title weekday" style="margin-right: 0">Sat</div>
+</div>
+<div ng-repeat="week in weeks">
+    <div class="small-1 columns everyday" ng-class="{ today: day.isToday, 'different-month': !day.isCurrentMonth, selected: day.date.isSame(selected) }" ng-click="select(day)" ng-repeat="day in week.days" data-open="day-detail" ng-disabled="!upcommingDuesDic.hasOwnProperty(day.date.format().substring(0, 10))">{{day.number}}
+        <ul ng-if="upcommingDuesDic.hasOwnProperty(day.date.format().substring(0, 10))" style="background:none">
+            <li ng-repeat="due in upcommingDuesDic[day.date.format().substring(0, 10)]">{{due.courseName.split(" ")[0] + " " + due.name}}</li>
+        </ul>
+    </div>
+</div>
