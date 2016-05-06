@@ -11,11 +11,11 @@ var express = require('express'),
 
 var router = express.Router();
 
-
-mongoose.connect(configDB.url,function(){
+mongoose.connect(configDB.url);
+//mongoose.connect(configDB.url,function(){
 	/* Drop the DB */
-	mongoose.connection.db.dropDatabase();
-}); // db connection
+//	mongoose.connection.db.dropDatabase();
+//}); // db connection
 require('./config/passport')(passport);
 
 
